@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.uploadWorks_con_title {
+		    width: 1062px;
+		    height: 51px;
+		    font-size: 14px;
+		    color: #282828;
+		    line-height: 51px;
+		    border-bottom: 1px solid #E5E5E5;
+		}
+		.uploadWorks_con_e{
+			width: 1062px;
+			margin: 200px auto 0;
+			padding: 0 20px 20px;
+			border: 2px solid #E5E5E5;
+			-webkit-border-radius: 8px;
+			-moz-border-radius: 8px;
+			border-radius: 8px;
+			overflow: hidden;         
+		}
+		.uploadWorks_con_e_text{
+			width: 1018px;
+			margin-top: 20px;	
+			background-color: #F4F4F4;
+			margin-left: 20px;
+			border: 1px solid #E5E5E5;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.uploadWorks_con_e_text .uploadWorks_con_e_text_con{
+			width: 920px;
+			height: 20px;
+			float: left;
+			resize: none;
+			border: 0;
+			background: none;
+			padding: 10px 20px;
+			font-size: 14px;
+			color: #333333;
+			line-height: 20px;
+			display: block;
+			outline: none;
+		}
+		.uploadWorks_con_e_text p{
+			width: 30px;
+			height: 40px;	
+			float: right;
+			font-size: 14px;
+			color: #999999;
+			line-height: 40px;
+			text-align: center;
+		}
+	</style>
+	
+	<script src="jquery-1.10.1.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="uploadWorks_con_e">
+	    <div class="uploadWorks_con_title">留言说明</div>
+	    <div class="uploadWorks_con_e_text">
+		    <textarea class="uploadWorks_con_e_text_con" placeholder="说出你的困惑，或是希望老师特别点评的地方"></textarea>
+			<p>80</p>
+		</div>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript">
+	$(function(){
+		//onchange在失去焦点的时候才触发
+		/*$(".uploadWorks_con_e_text_con").change(function(){
+			console.log(11)
+		});*/
+		
+		var value = "";
+		var length = 0;
+		$(".uploadWorks_con_e_text_con").keyup(function(){
+			if(length <= 0){
+				value = $(".uploadWorks_con_e_text_con").val().substring(0, 80);
+				$(".uploadWorks_con_e_text_con").val(value);
+			}
+			length = 80 - $(".uploadWorks_con_e_text_con").val().length;
+			$(".uploadWorks_con_e_text").find("p").html(length);			
+		});
+	})
+</script>
